@@ -1,0 +1,46 @@
+# BTC Heirloom — Bitcoin Self-Custody & Inheritance Scheme
+
+> A vendor-free, trust-minimized playbook for long-term Bitcoin self-custody and
+> posthumous inheritance. Core idea: replace trust with physical distribution and
+> single points of failure with incomplete secrets. Security does not depend on
+> secrecy (Kerckhoffs's principle). Contains no real keys, addresses, or locations.
+
+- License: CC BY-SA 4.0
+- Language: Chinese docs (with English README summary)
+
+## What this is
+An executable operational playbook (process, checklists, threat model) for an
+individual's Bitcoin custody and inheritance. It is NOT wallet software and
+contains no code or keys.
+
+## Key documents
+- docs/01-生前流程.md — setup, daily spending, vault distribution, annual drill
+- docs/02-身后流程.md — heir's step-by-step recovery guide
+- docs/03-威胁模型.md — threat model, trust assumptions, attacker profiles
+- docs/04-执行清单.md — shopping list, setup checklist, verification steps
+- docs/05-登记App配合.md — how a local encrypted registry fits in (product-agnostic)
+- docs/06-FAQ.md — questions and direct answers
+- docs/07-multisig升级路径.md — optional 2-of-3 multisig upgrade path
+- docs/08-费用清单.md — cost breakdown
+
+## Core design (30 seconds)
+Three artifact classes, each stored in three separate places, mutually isolated:
+1. Seed material (steel plate / SeedQR) — home safe / bank safe-deposit box / family home
+2. Vault password (machine-generated, 14+ chars) — relative A / relative B / lawyer
+3. Vault file (encrypted bundle: BIP39 passphrase + locations + tutorial) —
+   family phones / bank·lawyer backup / blind copy at a relative's
+
+Iron rule: seed material and the vault password never co-locate. No single
+compromised location yields a complete wallet.
+
+While alive: watch-only wallet + air-gapped QR signer + memorized BIP39 passphrase.
+After death: heirs retrieve the password → decrypt the vault → retrieve the seed →
+recover in any BIP39 wallet.
+
+## Direct answers
+- Is it a wallet? No — a playbook; no code, no keys.
+- Does publishing it weaken it? No — security is not in the secrecy of the method.
+- Multisig? Optional 2-of-3 upgrade path in docs/07.
+- Forgotten BIP39 passphrase? Unrecoverable by design; mitigate with annual drills.
+- Dependency on any app or vendor? None — recovery uses open standards (BIP39) and
+  a documented .vault format.
